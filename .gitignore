@@ -1,0 +1,9 @@
+# Cloudflare Wrangler 캐시
+.wrangler/
+
+# macOS 시스템 파일
+.DS_Store
+
+# 에디터 설정
+.vscode/
+.idea/
