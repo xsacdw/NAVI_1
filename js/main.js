@@ -5,13 +5,11 @@ const html = document.documentElement;
 // Load saved preference (default: dark)
 const savedTheme = localStorage.getItem('lotto-theme') || 'dark';
 html.setAttribute('data-theme', savedTheme);
-themeToggle.textContent = savedTheme === 'dark' ? '🌙 다크모드' : '☀️ 라이트모드';
 
 themeToggle.addEventListener('click', () => {
     const current = html.getAttribute('data-theme');
     const next = current === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
-    themeToggle.textContent = next === 'dark' ? '🌙 다크모드' : '☀️ 라이트모드';
     localStorage.setItem('lotto-theme', next);
 });
 

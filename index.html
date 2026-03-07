@@ -14,8 +14,14 @@
 
 <body>
 
-    <!-- Dark / Light Mode Toggle -->
-    <button class="theme-toggle" id="themeToggle" title="테마 전환" aria-label="테마 전환">🌙</button>
+    <!-- Dark / Light Mode Toggle Switch -->
+    <div class="theme-switch-wrapper" title="테마 전환">
+        <span class="switch-icon">☀️</span>
+        <button class="theme-switch" id="themeToggle" role="switch" aria-label="테마 전환">
+            <span class="switch-thumb"></span>
+        </button>
+        <span class="switch-icon">🌙</span>
+    </div>
 
     <div class="container">
         <h1>Lucky Lotto</h1>
