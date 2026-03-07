@@ -104,8 +104,15 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ===== HEADING ===== */
@@ -148,6 +155,61 @@ p.subtitle {
     animation: slideIn 0.5s ease-out forwards;
     opacity: 0;
     transition: background 0.4s ease, border-color 0.4s ease;
+    position: relative;
+}
+
+/* ===== COPY BUTTON ===== */
+.copy-btn {
+    margin-left: auto;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid var(--toggle-border);
+    background: var(--toggle-bg);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+.copy-btn:hover {
+    background: var(--toggle-hover);
+    color: var(--primary-glow);
+    transform: scale(1.15);
+}
+
+.copy-btn.copied {
+    background: #10b981;
+    border-color: #10b981;
+    color: white;
+}
+
+/* ===== COPY TOAST ===== */
+.copy-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #10b981;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    pointer-events: none;
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+}
+
+.copy-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 .game-label {
@@ -162,8 +224,15 @@ p.subtitle {
 }
 
 @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-20px); }
-    to   { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* ===== BALLS ===== */
@@ -183,14 +252,36 @@ p.subtitle {
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.ball.show { transform: scale(1); }
+.ball.show {
+    transform: scale(1);
+}
 
 /* Ball Color Classes (standard lotto colors) */
-.color-1 { background: linear-gradient(135deg, #fbbf24, #d97706); } /* 1~10  : Yellow */
-.color-2 { background: linear-gradient(135deg, #3b82f6, #2563eb); } /* 11~20 : Blue   */
-.color-3 { background: linear-gradient(135deg, #ef4444, #dc2626); } /* 21~30 : Red    */
-.color-4 { background: linear-gradient(135deg, #64748b, #475569); } /* 31~40 : Gray   */
-.color-5 { background: linear-gradient(135deg, #10b981, #059669); } /* 41~45 : Green  */
+.color-1 {
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+}
+
+/* 1~10  : Yellow */
+.color-2 {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+/* 11~20 : Blue   */
+.color-3 {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* 21~30 : Red    */
+.color-4 {
+    background: linear-gradient(135deg, #64748b, #475569);
+}
+
+/* 31~40 : Gray   */
+.color-5 {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+/* 41~45 : Green  */
 
 /* ===== GENERATE BUTTON ===== */
 .generate-btn {
@@ -211,13 +302,17 @@ p.subtitle {
 .generate-btn::after {
     content: '';
     position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: 0.5s;
 }
 
-.generate-btn:hover::after { left: 100%; }
+.generate-btn:hover::after {
+    left: 100%;
+}
 
 .generate-btn:hover {
     transform: translateY(-3px);
@@ -241,10 +336,35 @@ footer {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
-    .container    { padding: 2rem 1rem; }
-    h1            { font-size: 2.2rem; }
-    .ball         { width: 42px; height: 42px; font-size: 1rem; }
-    .game-row     { gap: 0.4rem; padding: 0.8rem; }
-    .game-label   { width: 50px; font-size: 0.6rem; }
-    .theme-toggle { top: 1rem; right: 1rem; width: 42px; height: 42px; font-size: 1.1rem; }
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .ball {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+
+    .game-row {
+        gap: 0.4rem;
+        padding: 0.8rem;
+    }
+
+    .game-label {
+        width: 50px;
+        font-size: 0.6rem;
+    }
+
+    .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
 }

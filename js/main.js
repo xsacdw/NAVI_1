@@ -42,6 +42,43 @@ function getLottoNumbers() {
     return Array.from(numbers).sort((a, b) => a - b);
 }
 
+// ===== COPY & TOAST =====
+let toastTimer = null;
+
+/**
+ * 화면 하단에 토스트 메시지를 잠깐 표시
+ */
+function showToast(message) {
+    let toast = document.getElementById('copyToast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'copyToast';
+        toast.className = 'copy-toast';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+/**
+ * 특정 게임의 번호를 클립보드에 복사
+ */
+function copyNumbers(numbers, btn) {
+    const text = numbers.join(', ');
+    navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = '✓';
+        btn.classList.add('copied');
+        showToast(`📋 ${text} 복사됐습니다!`);
+        setTimeout(() => {
+            btn.textContent = '📋';
+            btn.classList.remove('copied');
+        }, 2000);
+    });
+}
+
 /**
  * 5게임의 번호를 순차적으로 애니메이션과 함께 렌더링
  */
@@ -76,6 +113,14 @@ async function generateLotto() {
             setTimeout(() => ball.classList.add('show'), 10);
         }
 
+        // 모든 공이 나온 후 복사 버튼 추가
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-btn';
+        copyBtn.textContent = '📋';
+        copyBtn.title = '번호 복사';
+        copyBtn.addEventListener('click', () => copyNumbers(numbers, copyBtn));
+        row.appendChild(copyBtn);
+
         await new Promise(r => setTimeout(r, 100));
     }
 
@@ -84,3 +129,4 @@ async function generateLotto() {
 }
 
 btn.addEventListener('click', generateLotto);
+
