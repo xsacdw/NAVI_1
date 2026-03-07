@@ -70,13 +70,6 @@ body {
     align-items: center;
     gap: 0.5rem;
     z-index: 999;
-    background: var(--toggle-bg);
-    backdrop-filter: blur(8px);
-    border: 1.5px solid var(--toggle-border);
-    border-radius: 2rem;
-    padding: 0.4rem 0.8rem;
-    box-shadow: 0 4px 15px var(--shadow-color);
-    transition: all 0.3s ease;
 }
 
 .switch-icon {
