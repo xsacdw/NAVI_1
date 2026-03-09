@@ -41,7 +41,64 @@
         </footer>
     </div>
 
+    <!-- ===== DISQUS COMMENTS ===== -->
+    <div class="disqus-wrapper" id="disqusWrapper">
+        <div class="disqus-header">
+            <span class="disqus-title">💬 댓글</span>
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+
     <script src="js/main.js"></script>
+
+    <!-- Disqus Embed -->
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'https://lucky-lotto-8dt.pages.dev/';
+            this.page.identifier = 'lucky-lotto-main';
+        };
+        (function () {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://navi-1-1.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
+        // Sync Disqus color scheme with page theme
+        function syncDisqusTheme() {
+            var theme = document.documentElement.getAttribute('data-theme');
+            var iframe = document.querySelector('#disqus_thread iframe');
+            if (iframe) {
+                var url = new URL(iframe.src);
+                url.searchParams.set('color_scheme', theme === 'light' ? 'light' : 'dark');
+                iframe.src = url.toString();
+            }
+        }
+
+        // Watch for theme changes and reload Disqus with correct theme
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (m) {
+                if (m.attributeName === 'data-theme') {
+                    if (window.DISQUS) {
+                        var theme = document.documentElement.getAttribute('data-theme');
+                        window.DISQUS.reset({
+                            reload: true,
+                            config: function () {
+                                this.page.url = 'https://lucky-lotto-8dt.pages.dev/';
+                                this.page.identifier = 'lucky-lotto-main';
+                                this.language = 'ko';
+                            }
+                        });
+                    }
+                }
+            });
+        });
+        observer.observe(document.documentElement, { attributes: true });
+    </script>
+    <noscript>댓글을 보려면 JavaScript를 활성화해주세요.</noscript>
+
+    <!-- Disqus Comment Count -->
+    <script id="dsq-count-scr" src="//navi-1-1.disqus.com/count.js" async></script>
 </body>
 
 </html>
