@@ -18,7 +18,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            padding: 4rem 1rem;
+            padding: 6rem 1rem 4rem;
         }
 
         .container {
@@ -95,22 +95,25 @@
 </head>
 
 <body>
-    <div class="theme-switch-wrapper" title="테마 전환">
-        <span class="switch-icon">☀️</span>
-        <button class="theme-switch" id="themeToggle" role="switch" aria-label="테마 전환"><span
-                class="switch-thumb"></span></button>
-        <span class="switch-icon">🌙</span>
-    </div>
+    <!-- ===== SITE NAV ===== -->
+    <nav class="site-nav">
+        <a href="index.html" class="nav-logo">🍀 <span>Lucky Lotto</span></a>
+        <div class="nav-tabs">
+            <a href="index.html" class="nav-tab">🏠 홈</a>
+            <a href="about.html" class="nav-tab">📖 소개</a>
+            <a href="contact.html" class="nav-tab">🤝 제휴 문의</a>
+        </div>
+        <div class="nav-right">
+            <div class="theme-switch-wrapper" title="테마 전환">
+                <span class="switch-icon">☀️</span>
+                <button class="theme-switch" id="themeToggle" role="switch" aria-label="테마 전환"><span
+                        class="switch-thumb"></span></button>
+                <span class="switch-icon">🌙</span>
+            </div>
+        </div>
+    </nav>
 
     <div class="container">
-        <a href="index.html" class="back-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-            Lucky Lotto 홈으로
-        </a>
-
         <h1 class="policy-title">🔒 개인정보처리방침</h1>
         <p class="policy-date">최종 업데이트: 2026년 3월 9일</p>
 
