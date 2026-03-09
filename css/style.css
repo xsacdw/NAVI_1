@@ -449,3 +449,65 @@ footer {
         padding-top: 1.5rem;
     }
 }
+
+/* ===== INFO SECTION (메인 콘텐츠 설명) ===== */
+.info-section {
+    width: 100%;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--card-border);
+    text-align: left;
+    transition: border-color 0.4s ease;
+}
+
+.info-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.8rem;
+}
+
+.info-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.info-text strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 0.4rem 0.6rem;
+    background: var(--row-bg);
+    border-radius: 0.5rem;
+    border: 1px solid var(--row-border);
+}
+
+.info-disclaimer {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
