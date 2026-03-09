@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lucky Lotto 제휴 및 협업 문의 페이지입니다. 광고, 협찬, 파트너십 등 모든 문의를 환영합니다.">
+    <title>제휴 문의 - Lucky Lotto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ===== CONTACT PAGE OVERRIDES ===== */
+        body {
+            align-items: flex-start;
+            padding: 5rem 1rem 3rem;
+        }
+
+        .container {
+            text-align: left;
+            max-width: 640px;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: color 0.2s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .back-link:hover {
+            color: var(--primary-glow);
+        }
+
+        .back-link svg {
+            transition: transform 0.2s ease;
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-3px);
+        }
+
+        /* Page heading */
+        .contact-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-header h1 {
+            font-size: 2.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-header p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        /* Badge chips */
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--primary-glow);
+            letter-spacing: 0.02em;
+        }
+
+        /* Form styles */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        label span.required {
+            color: #f472b6;
+            margin-left: 0.2rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: var(--row-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.85rem;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+            cursor: pointer;
+        }
+
+        select option {
+            background: #1e293b;
+            color: #f8fafc;
+        }
+
+        [data-theme="light"] select option {
+            background: #ffffff;
+            color: #1e293b;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+            background: var(--card-bg);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 130px;
+            line-height: 1.6;
+        }
+
+        /* Submit button */
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px -5px rgba(99, 102, 241, 0.4);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            letter-spacing: 0.02em;
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+            transition: 0.5s;
+        }
+
+        .submit-btn:hover::after {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px -8px rgba(99, 102, 241, 0.55);
+            filter: brightness(1.08);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success / Error states */
+        .form-status {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            gap: 1rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .form-status .status-icon {
+            font-size: 3.5rem;
+            line-height: 1;
+        }
+
+        .form-status h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: var(--h1-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-status p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 340px;
+        }
+
+        .form-status .reset-btn {
+            margin-top: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--card-border);
+            border-radius: 0.7rem;
+            color: var(--text-muted);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .form-status .reset-btn:hover {
+            border-color: var(--primary-glow);
+            color: var(--primary-glow);
+        }
+
+        /* Divider */
+        .form-divider {
+            height: 1px;
+            background: var(--card-border);
+            margin: 0.4rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding-top: 4rem;
+            }
+
+            .contact-header h1 {
+                font-size: 1.9rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Theme Toggle -->
+    <div class="theme-switch-wrapper" title="테마 전환">
+        <span class="switch-icon">☀️</span>
+        <button class="theme-switch" id="themeToggle" role="switch" aria-label="테마 전환">
+            <span class="switch-thumb"></span>
+        </button>
+        <span class="switch-icon">🌙</span>
+    </div>
+
+    <div class="container">
+
+        <!-- Back Navigation -->
+        <a href="index.html" class="back-link" id="backLink">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Lucky Lotto로 돌아가기
+        </a>
+
+        <!-- Header -->
+        <div class="contact-header">
+            <h1>🤝 제휴 문의</h1>
+            <p class="subtitle">광고, 협찬, 파트너십 등 모든 협업 제안을 환영합니다.</p>
+            <div class="badge-row">
+                <span class="badge">💼 광고 협찬</span>
+                <span class="badge">🔗 파트너십</span>
+                <span class="badge">📢 프로모션</span>
+                <span class="badge">🛠 기술 협업</span>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form id="contactForm" class="contact-form" action="https://formspree.io/f/xreyebvp" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">이름 / 담당자명 <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" placeholder="홍길동" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="company">회사 / 브랜드명</label>
+                    <input type="text" id="company" name="company" placeholder="(주)행운컴퍼니" autocomplete="organization">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">이메일 <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="hello@example.com" required
+                    autocomplete="email">
+            </div>
+
+            <div class="form-group">
+                <label for="type">문의 유형 <span class="required">*</span></label>
+                <select id="type" name="inquiry_type" required>
+                    <option value="" disabled selected>문의 유형을 선택해주세요</option>
+                    <option value="광고 협찬">💼 광고 협찬</option>
+                    <option value="파트너십">🔗 파트너십 / 제휴</option>
+                    <option value="프로모션">📢 공동 프로모션</option>
+                    <option value="기술 협업">🛠 기술 협업</option>
+                    <option value="기타">💬 기타 문의</option>
+                </select>
+            </div>
+
+            <div class="form-divider"></div>
+
+            <div class="form-group">
+                <label for="message">문의 내용 <span class="required">*</span></label>
+                <textarea id="message" name="message" placeholder="제안하시는 협업의 내용, 목적, 예산 등을 자유롭게 작성해 주세요."
+                    required></textarea>
+            </div>
+
+            <!-- Formspree honeypot (spam prevention) -->
+            <input type="text" name="_gotcha" style="display:none">
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                ✉️ &nbsp;문의 보내기
+            </button>
+        </form>
+
+        <!-- Success Message -->
+        <div class="form-status" id="successStatus">
+            <span class="status-icon">🎉</span>
+            <h2>문의가 접수되었습니다!</h2>
+            <p>빠른 시일 내에 이메일로 회신 드리겠습니다.<br>Lucky Lotto에 관심 가져주셔서 감사합니다.</p>
+            <button class="reset-btn" id="resetBtn">다른 문의하기</button>
+        </div>
+
+        <!-- Error Message -->
+        <div class="form-status" id="errorStatus">
+            <span class="status-icon">😢</span>
+            <h2>전송에 실패했습니다</h2>
+            <p>일시적인 오류가 발생했습니다.<br>잠시 후 다시 시도하거나 직접 이메일로 연락해 주세요.</p>
+            <button class="reset-btn" id="retryBtn">다시 시도</button>
+        </div>
+
+        <footer>
+            &copy; 2026 Lucky Lotto &nbsp;·&nbsp; 제휴문의는 신중히 검토 후 답변 드립니다.
+        </footer>
+    </div>
+
+    <script>
+        /* ===== Theme Toggle ===== */
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+
+        /* ===== Formspree AJAX Submit ===== */
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successStatus = document.getElementById('successStatus');
+        const errorStatus = document.getElementById('errorStatus');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Disable button & show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = '전송 중...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    // Success
+                    form.style.display = 'none';
+                    successStatus.style.display = 'flex';
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch (err) {
+                form.style.display = 'none';
+                errorStatus.style.display = 'flex';
+            }
+        });
+
+        // Reset to form
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            form.reset();
+            form.style.display = 'flex';
+            successStatus.style.display = 'none';
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '✉️ &nbsp;문의 보내기';
+        });
+
+        document.getElementById('retryBtn').addEventListener('click', () => {
+            errorStatus.style.display = 'none';
+            form.style.display = 'flex';
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '✉️ &nbsp;문의 보내기';
+        });
+    </script>
+</body>
+
+</html>
