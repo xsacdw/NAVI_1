@@ -54,12 +54,14 @@ body {
         radial-gradient(at 100% 100%, var(--bg-gradient-2) 0px, transparent 50%);
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     color: var(--text-main);
-    padding: 2rem 0;
+    padding: 4rem 1rem 4rem;
     transition: background-color 0.4s ease, color 0.4s ease;
 }
+
 
 /* ===== THEME SWITCH ===== */
 .theme-switch-wrapper {
@@ -415,31 +417,23 @@ footer {
 
 /* ===== DISQUS COMMENTS ===== */
 .disqus-wrapper {
-    width: 95%;
-    max-width: 800px;
-    margin: 2rem auto 0;
-    padding: 2rem 2.5rem 2.5rem;
-    background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--card-border);
-    border-radius: 2rem;
-    box-shadow: 0 25px 50px -12px var(--shadow-color);
-    animation: fadeIn 0.8s ease-out 0.2s both;
-    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    width: 100%;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--card-border);
+    text-align: left;
+    transition: border-color 0.4s ease;
 }
 
 .disqus-header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 1.2rem;
 }
 
 .disqus-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--text-main);
     letter-spacing: -0.01em;
@@ -451,8 +445,7 @@ footer {
 
 @media (max-width: 600px) {
     .disqus-wrapper {
-        padding: 1.5rem 1rem;
-        border-radius: 1.5rem;
-        margin-top: 1.5rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
     }
 }
